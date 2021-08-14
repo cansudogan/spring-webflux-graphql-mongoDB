@@ -1,0 +1,22 @@
+type User {
+    firstName: String
+    lastName: String
+    userName: String
+    password: String
+    email: String
+}
+
+input UserDto{
+    userName: String
+    password: String
+}
+
+type Query {
+    getAll : [User]
+    getByUserName(userName: String): User
+}
+type Mutation {
+    authenticateUser(user: UserDto): String
+}
+
+
