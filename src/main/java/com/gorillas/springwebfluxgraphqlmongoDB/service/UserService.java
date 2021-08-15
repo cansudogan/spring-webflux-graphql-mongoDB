@@ -15,5 +15,5 @@ public interface UserService {
 
     Mono<Long> userCount();
 
-    String getJwtToken(String userName, String password);
+    Mono<String> getJwtToken(String userName, String password);
 }

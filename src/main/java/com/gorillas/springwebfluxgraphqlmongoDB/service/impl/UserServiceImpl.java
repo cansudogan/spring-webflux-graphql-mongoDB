@@ -52,7 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getJwtToken(String userName, String password) {
-        return jwtUtils.generateJwtToken(userName, password);
+    public Mono<String> getJwtToken(String userName, String password) {
+        return userRepository.findByUserNameAndPassword(userName, password)
+                .flatMap(u -> Mono.just(jwtUtils.generateJwtToken(userName, password)))
+                .switchIfEmpty(Mono.just("Usarname and password doesnt match! Try again!"));
     }
 }
