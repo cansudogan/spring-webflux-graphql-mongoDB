@@ -1,6 +1,5 @@
 package com.gorillas.springwebfluxgraphqlmongoDB.security;
 
-import com.gorillas.springwebfluxgraphqlmongoDB.entity.UserDto;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -22,9 +21,9 @@ public class JwtUtils {
     private int jwtExpirationMs;
 
 
-    public String generateJwtToken(UserDto userDto) {
+    public String generateJwtToken(String userName, String password) {
         return Jwts.builder()
-                .setSubject((userDto.getUserName()))
+                .setSubject(userName)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)

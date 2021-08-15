@@ -1,7 +1,6 @@
 package com.gorillas.springwebfluxgraphqlmongoDB.service;
 
 import com.gorillas.springwebfluxgraphqlmongoDB.entity.User;
-import com.gorillas.springwebfluxgraphqlmongoDB.entity.UserDto;
 import org.json.simple.JSONObject;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,5 +15,5 @@ public interface UserService {
 
     Mono<Long> userCount();
 
-    String getJwtToken(UserDto userDto);
+    String getJwtToken(String userName, String password);
 }

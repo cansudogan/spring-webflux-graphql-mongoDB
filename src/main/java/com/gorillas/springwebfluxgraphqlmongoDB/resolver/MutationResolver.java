@@ -1,6 +1,5 @@
 package com.gorillas.springwebfluxgraphqlmongoDB.resolver;
 
-import com.gorillas.springwebfluxgraphqlmongoDB.entity.UserDto;
 import com.gorillas.springwebfluxgraphqlmongoDB.service.UserService;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
@@ -14,7 +13,7 @@ public class MutationResolver {
     }
 
     @DgsData(parentType = "Mutation", field = "authenticateUser")
-    public String authenticateUser(UserDto userDto) {
-        return userService.getJwtToken(userDto);
+    public String authenticateUser(String userName, String password) {
+        return userService.getJwtToken(userName, password);
     }
 }

@@ -6,17 +6,10 @@ type User {
     email: String
 }
 
-input UserDto{
-    userName: String
-    password: String
-}
-
 type Query {
     getAll : [User]
     getByUserName(userName: String): User
 }
 type Mutation {
-    authenticateUser(user: UserDto): String
+    authenticateUser(userName: String, password: String): String
 }
-
-

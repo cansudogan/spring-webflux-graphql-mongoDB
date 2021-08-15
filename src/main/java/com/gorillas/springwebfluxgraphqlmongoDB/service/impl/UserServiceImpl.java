@@ -1,7 +1,6 @@
 package com.gorillas.springwebfluxgraphqlmongoDB.service.impl;
 
 import com.gorillas.springwebfluxgraphqlmongoDB.entity.User;
-import com.gorillas.springwebfluxgraphqlmongoDB.entity.UserDto;
 import com.gorillas.springwebfluxgraphqlmongoDB.exception.HttpException;
 import com.gorillas.springwebfluxgraphqlmongoDB.repository.UserRepository;
 import com.gorillas.springwebfluxgraphqlmongoDB.security.JwtUtils;
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getJwtToken(UserDto userDto) {
-        return jwtUtils.generateJwtToken(userDto);
+    public String getJwtToken(String userName, String password) {
+        return jwtUtils.generateJwtToken(userName, password);
     }
 }
